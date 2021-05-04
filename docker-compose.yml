@@ -1,0 +1,32 @@
+version: "2.4"
+
+services:
+  agviewer:
+    image: bitnine/agviewer:latest
+    ports:
+      - 3001:3001
+    env_file:
+      - ./docker.env
+    depends_on:
+      age:
+        condition: service_healthy
+    command: npm run start:dev
+
+  age:
+    image: sorrell/agensgraph-extension:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-age:/var/lib/postgresql/data
+      - ./sql/init-graph.sh:/docker-entrypoint-initdb.d/init-graph.sh
+    env_file:
+      - ./docker.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-age:
