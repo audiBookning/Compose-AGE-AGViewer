@@ -10,10 +10,10 @@ services:
     depends_on:
       age:
         condition: service_healthy
-    command: npm run start:dev
 
   age:
-    image: sorrell/agensgraph-extension:latest
+    # image: sorrell/agensgraph-extension:latest
+    build: .
     restart: always
     ports:
       - "5432:5432"

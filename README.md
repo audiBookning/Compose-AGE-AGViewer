@@ -2,9 +2,16 @@
 
 Test them with a docker compose file.
 
-Use `docker-compose up` to run the test.
+### Notes
+
+This uses a Dockerfile copied from [sorrell/agensgraph-extension](https://hub.docker.com/r/sorrell/agensgraph-extension) on docker hub. This let us test AGE with an image updated with the latest code.
+
+To use the Sorrel's image in docker hub, switch to the sorrel-image git branch in this repo.
+
+To try Age and AGViewer, use `docker-compose up` .
 
 AGViewer can be accessed at http://localhost:3001/
+
 The inputs to enter in the connection form will depend of the values in the compose file and the docker.env:
 
 - Database Type: Apache Age
@@ -17,7 +24,7 @@ The inputs to enter in the connection form will depend of the values in the comp
 
 ### Some query and mutations
 
-to test following the examples of [sorrell/agensgraph-extension](https://hub.docker.com/r/sorrell/agensgraph-extension) on docker hub
+The test follows the examples of [sorrell/agensgraph-extension](https://hub.docker.com/r/sorrell/agensgraph-extension) on docker hub
 
 Create some nodes:
 
